@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://rebrickable.com/api/v3/",
+			"url": "https://rebrickable.com",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
