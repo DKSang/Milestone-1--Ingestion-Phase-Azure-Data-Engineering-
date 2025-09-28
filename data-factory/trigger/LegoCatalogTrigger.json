@@ -1,0 +1,48 @@
+{
+	"name": "LegoCatalogTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Ingest_Rebrickable_AllFiles",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"fileList": [
+						"themes",
+						"colors",
+						"part_categories",
+						"parts",
+						"part_relationships",
+						"elements",
+						"sets",
+						"minifigs",
+						"inventories",
+						"inventory_parts",
+						"inventory_sets",
+						"inventory_minifigs"
+					]
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2025-09-28T09:03:00",
+				"timeZone": "SE Asia Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"name": "ADLSg2_LS",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://datalakerebrickable.dfs.core.windows.net/"
+		}
+	}
+}

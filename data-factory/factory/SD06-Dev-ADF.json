@@ -1,0 +1,9 @@
+{
+	"name": "SD06-Dev-ADF",
+	"location": "southeastasia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8c609026-c16a-42e3-8d37-af5d05539591",
+		"tenantId": "e7572e92-7aee-4713-a3c4-ba64888ad45f"
+	}
+}
