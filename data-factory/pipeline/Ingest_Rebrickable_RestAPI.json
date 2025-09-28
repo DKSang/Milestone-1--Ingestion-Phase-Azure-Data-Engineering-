@@ -101,7 +101,7 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"Content-Type": "application/json"
+						"Content-Type": "application/x-www-form-urlencoded"
 					},
 					"linkedServices": [
 						{
@@ -111,7 +111,7 @@
 					],
 					"url": "https://rebrickable.com/pi/v3/users/_token/",
 					"body": {
-						"value": "@concat('{\"username\":\"', activity('Get UserName').output.value, '\",\"password\":\"', activity('Get Password').output.value, '\"}')",
+						"value": "@concat('username=', activity('Get UserName').output.value, '&password=', activity('Get Password').output.value)\n",
 						"type": "Expression"
 					}
 				}
