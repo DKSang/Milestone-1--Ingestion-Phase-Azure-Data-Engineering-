@@ -22,6 +22,183 @@
 						"resource": "https://vault.azure.net"
 					}
 				}
+			},
+			{
+				"name": "Get Key API",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Get Password",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://rebrickableuser.vault.azure.net/secrets/apikey/?api-version=7.5",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "Get Password",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Get UserName",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "GET",
+					"url": "https://rebrickableuser.vault.azure.net/secrets/password/?api-version=7.5",
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://vault.azure.net"
+					}
+				}
+			},
+			{
+				"name": "Get User Token",
+				"type": "WebActivity",
+				"dependsOn": [
+					{
+						"activity": "Get Key API",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"Authorization": {
+							"value": "@concat('key ',activity('Get Key API').output.value)",
+							"type": "Expression"
+						}
+					},
+					"linkedServices": [
+						{
+							"referenceName": "RestAPILegoRebrickable",
+							"type": "LinkedServiceReference"
+						}
+					],
+					"url": "https://rebrickable.com/api/v3/users/_token/",
+					"body": {
+						"value": "{\n  \"username\": \"@{activity('Get UserName').output.value}\", \n  \"password\": \"@{activity('Get Password').output.value}\"\n}\n",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Send Email",
+				"type": "WebActivity",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Get User Token",
+						"dependencyConditions": [
+							"Skipped"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"url": "https://prod-93.southeastasia.logic.azure.com:443/workflows/87532257ce9d421e999608e101293879/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=U9XfwLTn4ZfANkf1fBDBj5csDXPIJRdrFAKmoWBz4MI",
+					"body": {
+						"message": "This is a custom dynamic message from your pipeline with run ID @{pipeline().RunId}.",
+						"dataFactoryName": "@{pipeline().DataFactory}",
+						"pipelineName": "@{pipeline().Pipeline}",
+						"receiver": "@{pipeline().parameters.receiver}"
+					}
+				}
+			},
+			{
+				"name": "Get Data",
+				"type": "Copy",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "Get User Token",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET",
+						"additionalHeaders": {
+							"Authorization": "@concat('key ',activity('Get Key API').output.value)"
+						},
+						"paginationRules": {
+							"": ""
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "RestAPIRebrickable_DS",
+						"type": "DatasetReference",
+						"parameters": {
+							"usertoken": {
+								"value": "@activity('Get User Token').output",
+								"type": "Expression"
+							}
+						}
+					}
+				]
 			}
 		],
 		"annotations": []

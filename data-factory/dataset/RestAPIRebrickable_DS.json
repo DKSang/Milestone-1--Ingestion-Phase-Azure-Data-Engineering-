@@ -1,0 +1,23 @@
+{
+	"name": "RestAPIRebrickable_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestAPILegoRebrickable",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"usertoken": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": {
+				"value": "@concat('/api/v3/users/',dataset().usertoken,'/parts/')",
+				"type": "Expression"
+			}
+		},
+		"schema": []
+	}
+}
