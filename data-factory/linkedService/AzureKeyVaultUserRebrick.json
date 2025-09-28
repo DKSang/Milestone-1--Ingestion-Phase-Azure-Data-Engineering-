@@ -1,0 +1,10 @@
+{
+	"name": "AzureKeyVaultUserRebrick",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://Rebrickableuser.vault.azure.net/"
+		}
+	}
+}
