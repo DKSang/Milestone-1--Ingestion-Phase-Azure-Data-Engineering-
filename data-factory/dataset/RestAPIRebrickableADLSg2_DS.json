@@ -1,0 +1,31 @@
+{
+	"name": "RestAPIRebrickableADLSg2_DS",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ADLSg2_LS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@concat(dataset().filename,'.json')",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@concat('RestAPIRebrickable/',dataset().filename,'/',formatDateTime(utcnow(),'yyyy'),'/',formatDateTime(utcnow(),'MM'),'/',formatDateTime(utcnow(),'dd'))",
+					"type": "Expression"
+				},
+				"fileSystem": "raw"
+			}
+		},
+		"schema": {}
+	}
+}

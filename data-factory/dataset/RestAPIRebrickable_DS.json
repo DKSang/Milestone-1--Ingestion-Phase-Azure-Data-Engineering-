@@ -8,13 +8,16 @@
 		"parameters": {
 			"usertoken": {
 				"type": "string"
+			},
+			"listfile": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat('/api/v3/users/',dataset().usertoken,'/parts/')",
+				"value": "@concat('/api/v3/users/',dataset().usertoken,'/',dataset().listfile,'/')",
 				"type": "Expression"
 			}
 		},
