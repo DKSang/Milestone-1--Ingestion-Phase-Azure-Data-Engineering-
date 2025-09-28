@@ -14,7 +14,7 @@ Mục tiêu là **thu thập dữ liệu từ Rebrickable** (bao gồm file down
   * REST API từ Rebrickable (user-specific data).
 * **Công cụ ingestion**: Azure Data Factory (ADF).
 * **Đích lưu trữ**: Azure Data Lake (raw container, partition by date).
-* **Quản lý bảo mật**: Azure Key Vault + Managed Identity.
+* **Quản lý bảo mật**: Azure Key Vault + Managed Identity + RBAC + ACL.
 * **Triển khai**: CI/CD pipelines qua Azure DevOps (Dev & Prod).
 
 ![ADF Pipeline](./Screenshot%202025-09-29%20004744.png)
@@ -49,5 +49,6 @@ Mục tiêu là **thu thập dữ liệu từ Rebrickable** (bao gồm file down
 💡 Đây là milestone đầu tiên trong hành trình Data Engineering với Azure.
 Các milestone tiếp theo sẽ tập trung vào **transform** và **serve** dữ liệu.
 >>>>>>> 25821d9009c3554ca3e921c3ef89543f89c5bad6
+
 
 
