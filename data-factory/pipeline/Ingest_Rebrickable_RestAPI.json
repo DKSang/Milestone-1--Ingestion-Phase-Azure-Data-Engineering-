@@ -102,9 +102,10 @@
 					"method": "POST",
 					"headers": {
 						"Authorization": {
-							"value": "@concat('key ',activity('Get Key API').output.value)",
+							"value": "@concat('key ', activity('Get Key API').output.value)",
 							"type": "Expression"
-						}
+						},
+						"Content-Type": "application/json"
 					},
 					"linkedServices": [
 						{
@@ -114,7 +115,7 @@
 					],
 					"url": "https://rebrickable.com/api/v3/users/_token/",
 					"body": {
-						"value": "{\n  \"username\": \"@{activity('Get UserName').output.value}\", \n  \"password\": \"@{activity('Get Password').output.value}\"\n}\n",
+						"value": "@concat('{\"username\":\"', activity('Get UserName').output.value, '\",\"password\":\"', activity('Get Password').output.value, '\"}')\n",
 						"type": "Expression"
 					}
 				}
@@ -179,7 +180,10 @@
 						"requestInterval": "00.00:00:00.010",
 						"requestMethod": "GET",
 						"additionalHeaders": {
-							"Authorization": "@concat('key ',activity('Get Key API').output.value)"
+							"Authorization": {
+								"value": "@concat('key ',activity('Get Key API').output.value)",
+								"type": "Expression"
+							}
 						},
 						"paginationRules": {
 							"": ""
