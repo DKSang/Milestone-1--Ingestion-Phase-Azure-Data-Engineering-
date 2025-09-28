@@ -185,9 +185,6 @@
 											"value": "@concat('key ',activity('Get Key API').output.value)",
 											"type": "Expression"
 										}
-									},
-									"paginationRules": {
-										"supportRFC5988": "true"
 									}
 								},
 								"sink": {
@@ -207,7 +204,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"usertoken": {
-											"value": "@activity('Get User Token').output.body.user_token",
+											"value": "@activity('Get User Token').output.user_token",
 											"type": "Expression"
 										},
 										"listfile": {
