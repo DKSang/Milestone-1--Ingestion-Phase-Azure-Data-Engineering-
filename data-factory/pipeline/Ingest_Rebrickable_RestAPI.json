@@ -201,7 +201,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"usertoken": {
-											"value": "@activity('Get User Token').output.value",
+											"value": "@activity('Get User Token').output.body.user_token",
 											"type": "Expression"
 										},
 										"listfile": {
