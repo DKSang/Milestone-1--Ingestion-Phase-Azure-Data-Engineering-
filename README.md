@@ -1,5 +1,9 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+TODO: Dự án này triển khai giai đoạn ingestion của giải pháp Data Engineering sử dụng Azure Data Factory (ADF).
+Dữ liệu được lấy từ:
+- File CSV từ trang Rebrickable (Lego sets)
+- REST API Rebrickable (dữ liệu người dùng)
+Dữ liệu được lưu trữ tại Azure Data Lake Storage Gen2 (ADLS Gen2).
 
 # Getting Started
 TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
