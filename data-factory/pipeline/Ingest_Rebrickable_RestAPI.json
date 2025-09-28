@@ -111,7 +111,7 @@
 					],
 					"url": "https://rebrickable.com/api/v3/users/_token/",
 					"body": {
-						"value": "@concat('{\"username\":\"', activity('Get UserName').output.value, '\",\"password\":\"', activity('Get Password').output.value, '\"}')\n",
+						"value": "@concat('{\"username\":\"', activity('Get UserName').output.value, '\",\"password\":\"', activity('Get Password').output.value, '\"}')",
 						"type": "Expression"
 					}
 				}
