@@ -1,0 +1,17 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+
+- stage: BUILD
+  jobs:
+  - template: adf-build-job.yml
+    parameters:
+      subscriptionId: 33f88ad7-bb16-46d3-9d3a-20f5e40364a4
+      resourceGroupName: Dev-Azure
+      dataFactoryName: SD06-Dev-ADF
+      repoRootFolder: /data-factory/
+      packageJsonFolder: /devops/
