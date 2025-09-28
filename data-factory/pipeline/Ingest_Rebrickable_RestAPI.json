@@ -101,7 +101,11 @@
 				"typeProperties": {
 					"method": "POST",
 					"headers": {
-						"Content-Type": "application/x-www-form-urlencoded"
+						"Content-Type": "application/x-www-form-urlencoded",
+						"Authorization": {
+							"value": "@concat('key ',activity('Get Key API').output.value)",
+							"type": "Expression"
+						}
 					},
 					"url": "https://rebrickable.com/api/v3/users/_token/",
 					"body": {
