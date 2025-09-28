@@ -182,7 +182,7 @@
 									"requestMethod": "GET",
 									"additionalHeaders": {
 										"Authorization": {
-											"value": "@concat('key ',activity('Get Key API').output)",
+											"value": "@concat('key ',activity('Get Key API').output.value)",
 											"type": "Expression"
 										}
 									},
