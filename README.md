@@ -17,7 +17,7 @@ Mục tiêu là **thu thập dữ liệu từ Rebrickable** (bao gồm file down
 * **Quản lý bảo mật**: Azure Key Vault + Managed Identity.
 * **Triển khai**: CI/CD pipelines qua Azure DevOps (Dev & Prod).
 
-![ADF Pipeline](./images/pipeline.png)
+![ADF Pipeline](./Screenshot%202025-09-29%20004744.png)
 
 ## 🔧 Các kỹ năng đã áp dụng
 
@@ -48,3 +48,4 @@ Mục tiêu là **thu thập dữ liệu từ Rebrickable** (bao gồm file down
 💡 Đây là milestone đầu tiên trong hành trình Data Engineering với Azure.
 Các milestone tiếp theo sẽ tập trung vào **transform** và **serve** dữ liệu.
 >>>>>>> 25821d9009c3554ca3e921c3ef89543f89c5bad6
+
